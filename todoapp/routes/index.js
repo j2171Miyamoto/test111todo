@@ -10,8 +10,11 @@ const connection = new pg.Pool({
   port: 5432,
   });
 
-  router.get('/', function (req, res, next) {
-    connection.query(
+ 
+
+/* GET home page. */
+router.get('/', function(req, res, next) {
+  connection.query(
     `select * from tasks;`,
     (error, results) => {
     console.log(error);
@@ -21,7 +24,7 @@ const connection = new pg.Pool({
     todos: results.rows, });
     }
     );
-    });
+});
 
 router.post('/', function (req, res, next) {
   connection.connect((err) => {
